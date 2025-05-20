@@ -19,18 +19,18 @@ export class PassageiroService {
     return this.http.post<Passageiro>(this.apiURL, passageiro);
   }
 
-  buscarPassageiro(id: number): Observable<Passageiro> {
+  buscarPassageiro(id: string): Observable<Passageiro> {
     return this.http.get<Passageiro>(`${this.apiURL}/${id}`);
   }
 
   atualizarPassageiro(
-    id: number,
+    id: string,
     passageiro: Passageiro
   ): Observable<Passageiro> {
     return this.http.patch<Passageiro>(`${this.apiURL}/${id}`, passageiro);
   }
 
-  deletarPassageiro(id: number): Observable<void> {
+  deletarPassageiro(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${id}`);
   }
 }
