@@ -1,1 +1,99 @@
-<p>cadastro works!</p>
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Cadastro Works!</p>
+
+    <form (ngSubmit)="salvar()">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Nome:</span>
+        <input
+          class="form-control"
+          name="nome"
+          type="text"
+          [(ngModel)]="passageiro.nome"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">CPF:</span>
+        <input
+          class="form-control"
+          name="cpf"
+          type="text"
+          [(ngModel)]="passageiro.cpf"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Contato:</span>
+        <input
+          class="form-control"
+          name="contato"
+          type="text"
+          [(ngModel)]="passageiro.contato"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">E-mail:</span>
+        <input
+          class="form-control"
+          name="email"
+          type="email"
+          [(ngModel)]="passageiro.email"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Senha:</span>
+        <input
+          class="form-control"
+          name="senha"
+          type="password"
+          [(ngModel)]="passageiro.senha"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">CEP:</span>
+        <input
+          class="form-control"
+          name="cep"
+          type="text"
+          [(ngModel)]="passageiro.cep"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Rua:</span>
+        <input
+          class="form-control"
+          name="rua"
+          type="text"
+          [(ngModel)]="passageiro.rua"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Horário de Embarque:</span>
+        <input
+          class="form-control"
+          name="horarioEmbarque"
+          type="datetime-local"
+          [(ngModel)]="passageiro.horario_embarque"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Motorista:</span>
+        <input
+          class="form-control"
+          name="motorista"
+          type="text"
+          [(ngModel)]="passageiro.id_motorista"
+        />
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+    </form>
+  </div>
+</div>
