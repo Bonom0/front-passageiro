@@ -1,0 +1,29 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Cadastro Works!</p>
+
+    <form (ngSubmit)="salvar()">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Fantasia:</span>
+        <input
+          class="form-control"
+          name="fantasia"
+          type="text"
+          [(ngModel)]="empresa.fantasia"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">CNPJ:</span>
+        <input
+          class="form-control"
+          name="cnpj"
+          type="text"
+          [(ngModel)]="empresa.cnpj"
+        />
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+    </form>
+  </div>
+</div>

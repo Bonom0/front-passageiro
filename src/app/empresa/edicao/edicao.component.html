@@ -1,0 +1,29 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Edição Works!</p>
+
+    <form (ngSubmit)="salvar()">
+      <div class="mb-3">
+        <label class="form-label">Fantasia:</label>
+        <input
+          name="fantasia"
+          type="text"
+          [(ngModel)]="empresa.fantasia"
+          class="form-control"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">CNPJ:</label>
+        <input
+          name="cnpj"
+          type="text"
+          [(ngModel)]="empresa.cnpj"
+          class="form-control"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100">Gravar</button>
+    </form>
+  </div>
+</div>
