@@ -6,6 +6,20 @@
       <a routerLink="/cadastro" class="btn btn-success">Novo Cadastro</a>
     </div>
 
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="filtroNome"
+        placeholder="Filtrar por nome"
+      />
+      <input
+        type="text"
+        [(ngModel)]="filtroEmail"
+        placeholder="Filtrar por e-mail"
+      />
+      <button (click)="aplicarFiltros()">Filtrar</button>
+    </div>
+
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
         <thead class="table-light">

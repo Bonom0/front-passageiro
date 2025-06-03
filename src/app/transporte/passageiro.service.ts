@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Passageiro } from './passageiro.model';
@@ -11,8 +11,19 @@ export class PassageiroService {
 
   constructor(private http: HttpClient) {}
 
-  listarPassageiro(): Observable<Passageiro[]> {
-    return this.http.get<Passageiro[]>(this.apiURL);
+  listarPassageiro(
+    filtroNome = '',
+    filtroEmail = '',
+    sort: 'nome' | 'email' = 'nome',
+    direction: 'asc' | 'desc' = 'asc'
+  ): Observable<Passageiro[]> {
+    return this.http.get<Passageiro[]>(this.apiURL, {
+      params: new HttpParams()
+        .set('nome', filtroNome)
+        .set('email', filtroEmail)
+        .set('sort', sort)
+        .set('direction', direction),
+    });
   }
 
   cadastrarPassageiro(passageiro: Passageiro): Observable<Passageiro> {
