@@ -18,8 +18,7 @@
         <tbody>
           <tr *ngFor="let tipousuario of tipousuarios">
             <td>{{ tipousuario.id }}</td>
-            <td>{{ tipousuario.nome }}</td>
-            <td>{{ tipousuario.cpf }}</td>
+            <td>{{ tipousuario.descricao }}</td>
             <td>
               <a
                 [routerLink]="['/edicao', tipousuario.id]"
