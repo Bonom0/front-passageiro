@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './listagem.component.html',
   styleUrl: './listagem.component.css',
 })
-export class ListagemComponent implements OnInit {
+export class TipoUsuarioListagemComponent implements OnInit {
   tipousuarios: TipoUsuario[] = [];
 
   constructor(private tipousuarioService: TipoUsuarioService) {}
