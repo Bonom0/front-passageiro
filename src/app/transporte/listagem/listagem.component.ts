@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './listagem.component.html',
   styleUrl: './listagem.component.css',
 })
-export class ListagemComponent implements OnInit {
+export class PassageiroListagemComponent implements OnInit {
   passageiros: Passageiro[] = [];
 
   filtroNome = '';
