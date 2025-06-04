@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
 })
-export class CadastroComponent {
+export class PassageiroCadastroComponent {
   passageiro: Passageiro = {
     id: '',
     nome: '',
