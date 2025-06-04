@@ -11,10 +11,10 @@ import { TipoUsuario } from '../tipousuario.model';
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
 })
-export class EdicaoComponent implements OnInit {
+export class TipoUsuarioEdicaoComponent implements OnInit {
   tipousuario: TipoUsuario = {
     id: '',
-    descricao: ''
+    descricao: '',
   };
   private id!: string;
 
