@@ -11,23 +11,18 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
 })
-export class CadastroComponent {
+export class EmpresaCadastroComponent {
   empresa: Empresa = {
     id: '',
     fantasia: '',
-    cnpj: ''
+    cnpj: '',
   };
 
-  constructor(
-    private empresaService: EmpresaService,
-    private router: Router
-  ) {}
+  constructor(private empresaService: EmpresaService, private router: Router) {}
 
   salvar() {
-    this.empresaService
-      .cadastrarEmpresa(this.empresa)
-      .subscribe(() => {
-        this.router.navigate(['/listagem']);
-      });
+    this.empresaService.cadastrarEmpresa(this.empresa).subscribe(() => {
+      this.router.navigate(['/listagem']);
+    });
   }
 }
