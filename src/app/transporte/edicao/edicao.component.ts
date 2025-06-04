@@ -11,7 +11,7 @@ import { Passageiro } from '../passageiro.model';
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
 })
-export class EdicaoComponent implements OnInit {
+export class PassageiroEdicaoComponent implements OnInit {
   passageiro: Passageiro = {
     id: '',
     nome: '',
