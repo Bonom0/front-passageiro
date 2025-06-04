@@ -1,0 +1,26 @@
+.side {
+  width: 200px;
+  min-height: 100vh;
+  background: #f2f2f2;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.side ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.side li + li {
+  margin-top: 8px;
+}
+
+.side a {
+  text-decoration: none;
+  color: #333;
+}
+
+.active {
+  font-weight: bold;
+}
