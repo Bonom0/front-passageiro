@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
 })
-export class CadastroComponent {
+export class TipoUsuarioCadastroComponent {
   tipousuario: TipoUsuario = {
     id: '',
-    descricao: ''
+    descricao: '',
   };
 
   constructor(
