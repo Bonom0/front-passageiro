@@ -19,12 +19,10 @@
         <tbody>
           <tr *ngFor="let empresa of empresas">
             <td>{{ empresa.id }}</td>
-            <td>{{ empresa.nome }}</td>
-            <td>{{ empresa.cpf }}</td>
+            <td>{{ empresa.fantasia }}</td>
+            <td>{{ empresa.cnpj }}</td>
             <td>
-              <a
-                [routerLink]="['/edicao', empresa.id]"
-                class="btn btn-warning"
+              <a [routerLink]="['/edicao', empresa.id]" class="btn btn-warning"
                 >Edição</a
               >
             </td>
