@@ -11,11 +11,11 @@ import { Empresa } from '../empresa.model';
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
 })
-export class EdicaoComponent implements OnInit {
+export class EmpresaEdicaoComponent implements OnInit {
   empresa: Empresa = {
     id: '',
     fantasia: '',
-    cnpj: ''
+    cnpj: '',
   };
   private id!: string;
 
