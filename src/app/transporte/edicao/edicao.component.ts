@@ -5,6 +5,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PassageiroService } from '../passageiro.service';
 import { Passageiro } from '../passageiro.model';
 
+import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
+import { TipoUsuario } from '../../tipousuario/tipousuario.model';
+
 @Component({
   selector: 'app-edicao',
   imports: [CommonModule, FormsModule],
@@ -29,15 +32,19 @@ export class PassageiroEdicaoComponent implements OnInit {
   };
   private id!: string;
 
+  tiposUsuario: TipoUsuario[] = [];
+
   constructor(
     private route: ActivatedRoute, //captura o ID
     private router: Router, //controle de rotas
-    private passageiroService: PassageiroService //métodos HTTP
+    private passageiroService: PassageiroService, //métodos HTTP
+    private tipoUsuarioService: TipoUsuarioService
   ) {}
 
   ngOnInit(): void {
     this.id = String(this.route.snapshot.paramMap.get('id'));
     this.carregarPassageiro();
+    this.carregarTiposUsuario();
   }
 
   carregarPassageiro(): void {
@@ -48,6 +55,12 @@ export class PassageiroEdicaoComponent implements OnInit {
 
     this.passageiroService.buscarPassageiro(this.id).subscribe((a) => {
       this.passageiro = a;
+    });
+  }
+
+  carregarTiposUsuario(): void {
+    this.tipoUsuarioService.listarTipoUsuario().subscribe((tipos) => {
+      this.tiposUsuario = tipos;
     });
   }
 
