@@ -26,7 +26,7 @@ export class TipoUsuarioCadastroComponent {
     this.tipousuarioService
       .cadastrarTipoUsuario(this.tipousuario)
       .subscribe(() => {
-        this.router.navigate(['/listagem']);
+        this.router.navigate(['/tipousuario/listagem']);
       });
   }
 }
