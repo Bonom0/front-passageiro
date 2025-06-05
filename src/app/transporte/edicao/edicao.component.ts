@@ -42,7 +42,7 @@ export class PassageiroEdicaoComponent implements OnInit {
 
   carregarPassageiro(): void {
     if (!this.id) {
-      this.router.navigate(['/listagem']);
+      this.router.navigate(['/passageiro/listagem']);
       return;
     }
 
@@ -54,10 +54,19 @@ export class PassageiroEdicaoComponent implements OnInit {
   salvar(): void {
     if (!this.passageiro) return;
 
+    const passageiroCorrigido = { ...this.passageiro };
+
+    if (passageiroCorrigido.horario_embarque) {
+      // Converte a string do input datetime-local para Date (mantém horário local)
+      passageiroCorrigido.horario_embarque = new Date(
+        passageiroCorrigido.horario_embarque
+      );
+    }
+
     this.passageiroService
-      .atualizarPassageiro(this.id, this.passageiro)
+      .atualizarPassageiro(this.id, passageiroCorrigido)
       .subscribe(() => {
-        this.router.navigate(['/listagem']);
+        this.router.navigate(['/passageiro/listagem']);
       });
   }
 }
