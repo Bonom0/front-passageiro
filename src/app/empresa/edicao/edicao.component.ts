@@ -32,7 +32,7 @@ export class EmpresaEdicaoComponent implements OnInit {
 
   carregarEmpresa(): void {
     if (!this.id) {
-      this.router.navigate(['/listagem']);
+      this.router.navigate(['/empresa/listagem']);
       return;
     }
 
@@ -47,7 +47,7 @@ export class EmpresaEdicaoComponent implements OnInit {
     this.empresaService
       .atualizarEmpresa(this.id, this.empresa)
       .subscribe(() => {
-        this.router.navigate(['/listagem']);
+        this.router.navigate(['/empresa/listagem']);
       });
   }
 }
