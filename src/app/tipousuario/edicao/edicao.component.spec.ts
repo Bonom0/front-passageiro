@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EdicaoComponent } from './edicao.component';
+import { TipoUsuarioEdicaoComponent } from './edicao.component';
 
 describe('EdicaoComponent', () => {
-  let component: EdicaoComponent;
-  let fixture: ComponentFixture<EdicaoComponent>;
+  let component: TipoUsuarioEdicaoComponent;
+  let fixture: ComponentFixture<TipoUsuarioEdicaoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EdicaoComponent]
-    })
-    .compileComponents();
+      imports: [TipoUsuarioEdicaoComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(EdicaoComponent);
+    fixture = TestBed.createComponent(TipoUsuarioEdicaoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
