@@ -1,9 +1,11 @@
 <div class="container d-flex justify-content-center mt-5">
   <div class="w-100" style="max-width: 1280px">
-    <p class="text-center fs-4 mb-4">Listagem Works!</p>
+    <p class="text-center fs-4 mb-4">Listagem de Tipos de Usuário</p>
 
     <div class="mb-3 text-end">
-      <a routerLink="/cadastro" class="btn btn-success">Novo Cadastro</a>
+      <a routerLink="/tipousuario/cadastro" class="btn btn-success"
+        >Novo Cadastro</a
+      >
     </div>
 
     <div class="table-responsive">
@@ -21,7 +23,7 @@
             <td>{{ tipousuario.descricao }}</td>
             <td>
               <a
-                [routerLink]="['/edicao', tipousuario.id]"
+                [routerLink]="['/tipousuario/edicao', tipousuario.id]"
                 class="btn btn-warning"
                 >Edição</a
               >
