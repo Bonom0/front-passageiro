@@ -22,7 +22,7 @@ export class EmpresaCadastroComponent {
 
   salvar() {
     this.empresaService.cadastrarEmpresa(this.empresa).subscribe(() => {
-      this.router.navigate(['/listagem']);
+      this.router.navigate(['empresa/listagem']);
     });
   }
 }
