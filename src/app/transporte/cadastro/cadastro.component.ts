@@ -34,10 +34,19 @@ export class PassageiroCadastroComponent {
   ) {}
 
   salvar() {
+    const passageiroCorrigido = { ...this.passageiro };
+
+    if (passageiroCorrigido.horario_embarque) {
+      // Converte a string do input datetime-local para Date (mantém horário local)
+      passageiroCorrigido.horario_embarque = new Date(
+        passageiroCorrigido.horario_embarque
+      );
+    }
+
     this.passageiroService
-      .cadastrarPassageiro(this.passageiro)
+      .cadastrarPassageiro(passageiroCorrigido)
       .subscribe(() => {
-        this.router.navigate(['/listagem']);
+        this.router.navigate(['/passageiro/listagem']);
       });
   }
 }
