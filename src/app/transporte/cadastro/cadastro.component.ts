@@ -5,6 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { PassageiroService } from '../passageiro.service';
 import { Router } from '@angular/router';
 
+import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
+import { TipoUsuario } from '../../tipousuario/tipousuario.model';
+
 @Component({
   selector: 'app-cadastro',
   imports: [CommonModule, FormsModule],
@@ -28,10 +31,19 @@ export class PassageiroCadastroComponent {
     email: '',
   };
 
+  tiposUsuario: TipoUsuario[] = [];
+
   constructor(
     private passageiroService: PassageiroService,
+    private tipoUsuarioService: TipoUsuarioService,
     private router: Router
   ) {}
+
+  ngOnInit() {
+    this.tipoUsuarioService.listarTipoUsuario().subscribe((tipos) => {
+      this.tiposUsuario = tipos;
+    });
+  }
 
   salvar() {
     const passageiroCorrigido = { ...this.passageiro };
