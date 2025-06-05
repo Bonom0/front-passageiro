@@ -6,3 +6,9 @@
   flex: 1;
   padding: 16px;
 }
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
