@@ -93,6 +93,16 @@
         />
       </div>
 
+      <div class="input-group mb-3">
+        <span class="input-group-text">Tipo de Usuário:</span>
+        <select class="form-select" name="tipo" [(ngModel)]="passageiro.tipo">
+          <option value="" disabled>Selecione um tipo</option>
+          <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
+            {{ tipo.descricao }}
+          </option>
+        </select>
+      </div>
+
       <button class="btn btn-primary w-100" type="submit">Gravar</button>
     </form>
   </div>
