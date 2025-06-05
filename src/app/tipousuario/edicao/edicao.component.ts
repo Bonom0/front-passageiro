@@ -31,7 +31,7 @@ export class TipoUsuarioEdicaoComponent implements OnInit {
 
   carregarTipoUsuario(): void {
     if (!this.id) {
-      this.router.navigate(['/listagem']);
+      this.router.navigate(['/tipousuario/listagem']);
       return;
     }
 
@@ -46,7 +46,7 @@ export class TipoUsuarioEdicaoComponent implements OnInit {
     this.tipousuarioService
       .atualizarTipoUsuario(this.id, this.tipousuario)
       .subscribe(() => {
-        this.router.navigate(['/listagem']);
+        this.router.navigate(['/tipousuario/listagem']);
       });
   }
 }
