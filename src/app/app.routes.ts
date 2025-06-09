@@ -8,9 +8,10 @@ import { TipoUsuarioCadastroComponent } from './tipousuario/cadastro/cadastro.co
 import { EmpresaCadastroComponent } from './empresa/cadastro/cadastro.component';
 import { EmpresaEdicaoComponent } from './empresa/edicao/edicao.component';
 import { EmpresaListagemComponent } from './empresa/listagem/listagem.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'passageiro/listagem', pathMatch: 'full' },
+  { path: '', component: LoginComponent },
 
   { path: 'passageiro/listagem', component: PassageiroListagemComponent },
 
