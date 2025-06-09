@@ -1,6 +1,11 @@
-<div class="wrapper">
-  <!-- <app-sidebar></app-sidebar> -->
-  <main class="content">
+<div *ngIf="!isLoggedIn">
+  <app-login (loginSuccess)="onLogin()"></app-login>
+</div>
+
+<div *ngIf="isLoggedIn" class="wrapper">
+  <app-sidebar (collapsedChange)="onSidebarToggle($event)"></app-sidebar>
+
+  <main class="content" [class.collapsed]="sidebarCollapsed">
     <h1>Gestor Passageiro</h1>
     <router-outlet></router-outlet>
   </main>
