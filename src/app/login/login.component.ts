@@ -12,12 +12,13 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   email = '';
   password = '';
+  userType = 'Operador';
 
-  @Output() loginSuccess = new EventEmitter<void>();
+  @Output() loginSuccess = new EventEmitter<{ userType: string; email: string; password: string }>();
 
   onSubmit() {
     if (this.email && this.password.length >= 6) {
-      this.loginSuccess.emit();
+      this.loginSuccess.emit({ userType: this.userType, email: this.email, password: this.password });
     } else {
       alert('Email ou senha inválidos');
     }
