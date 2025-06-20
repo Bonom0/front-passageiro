@@ -1,5 +1,5 @@
 <div class="login-container">
-  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form">
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="login-form" novalidate>
     <h2>Login</h2>
 
     <label for="email">Email</label>
@@ -11,8 +11,10 @@
       [(ngModel)]="email"
       #emailInput="ngModel"
       placeholder="seu@email.com"
+      [class.invalid]="emailInput.invalid && emailInput.touched"
+      aria-describedby="emailError"
     />
-    <div class="error" *ngIf="emailInput.invalid && emailInput.touched">
+    <div class="error" id="emailError" *ngIf="emailInput.invalid && emailInput.touched">
       Email é obrigatório e deve ser válido.
     </div>
 
@@ -26,9 +28,30 @@
       [(ngModel)]="password"
       #passwordInput="ngModel"
       placeholder="sua senha"
+      [class.invalid]="passwordInput.invalid && passwordInput.touched"
+      aria-describedby="passwordError"
     />
-    <div class="error" *ngIf="passwordInput.invalid && passwordInput.touched">
-      A senha está incorreta.
+    <div class="error" id="passwordError" *ngIf="passwordInput.invalid && passwordInput.touched">
+      A senha deve ter pelo menos 6 caracteres.
+    </div>
+
+    <label for="userType">Tipo de Usuário</label>
+    <select
+      name="userType"
+      id="userType"
+      required
+      [(ngModel)]="userType"
+      #userTypeInput="ngModel"
+      [class.invalid]="userTypeInput.invalid && userTypeInput.touched"
+      aria-describedby="userTypeError"
+    >
+      <option value="" disabled selected>Selecione o tipo de usuário</option>
+      <option value="Operador">Operador</option>
+      <option value="Motorista">Motorista</option>
+      <option value="Passageiro">Passageiro</option>
+    </select>
+    <div class="error" id="userTypeError" *ngIf="userTypeInput.invalid && userTypeInput.touched">
+      Selecione um tipo de usuário.
     </div>
 
     <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
