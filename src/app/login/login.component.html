@@ -54,6 +54,10 @@
       Selecione um tipo de usuário.
     </div>
 
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
     <button type="submit" [disabled]="loginForm.invalid">Entrar</button>
   </form>
 </div>
