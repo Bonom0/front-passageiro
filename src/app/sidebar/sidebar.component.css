@@ -2,7 +2,8 @@
   width: 250px;
   background-color: #2c3e50;
   color: #ecf0f1;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   padding-top: 10px;
   box-sizing: border-box;
   transition: width 0.3s ease;
@@ -31,6 +32,36 @@
   margin: 0;
 }
 
+/* Dashboard fixo no topo */
+.menu > li > a {
+  color: #bdc3c7;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-bottom: 6px;
+}
+
+.menu > li > a:hover,
+.menu > li > a.active {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+.menu > li > a i {
+  margin-right: 10px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.sidebar.collapsed .menu > li > a .link-text {
+  display: none;
+}
+
+/* Grupos de menu (Cadastro, Listagem) */
 .menu-group {
   margin-bottom: 10px;
 }
@@ -46,7 +77,6 @@
   font-size: 14px;
 }
 
-/* Ícone do toggle na direita */
 .group-title i {
   font-size: 12px;
   transition: transform 0.3s ease;
@@ -101,8 +131,6 @@
   justify-content: center;
 }
 
-/* Se quiser rotacionar o ícone da seta na expansão */
-/* Opcional, melhora UX */
 .group-title[aria-expanded="true"] i {
   transform: rotate(0deg);
 }
@@ -113,4 +141,38 @@
 
 .sidebar.collapsed .group-title i {
   display: none;
+}
+
+/* Botão de logout */
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #ecf0f1;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 13px;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease;
+  margin-top: 20px;
+}
+
+.logout-button:hover {
+  background-color: #34495e;
+  color: #ecf0f1;
+}
+
+.sidebar.collapsed .logout-button {
+  justify-content: center;
+}
+
+.sidebar.collapsed .logout-button .link-text {
+  display: none;
+}
+
+.material-icons {
+  font-size: 18px;
 }
