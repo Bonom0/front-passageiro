@@ -1,12 +1,12 @@
-<div *ngIf="!isLoggedIn">
+<div *ngIf="!(isLoggedIn$ | async)">
   <app-login (loginSuccess)="onLogin()"></app-login>
 </div>
 
-<div *ngIf="isLoggedIn" class="wrapper">
+<div *ngIf="isLoggedIn$ | async" class="wrapper">
   <app-sidebar (collapsedChange)="onSidebarToggle($event)"></app-sidebar>
 
   <main class="content" [class.collapsed]="sidebarCollapsed">
-    <h1>Gestor Passageiro</h1>
+    <!-- <h1>Gestor Passageiro</h1> -->
     <router-outlet></router-outlet>
   </main>
 </div>
