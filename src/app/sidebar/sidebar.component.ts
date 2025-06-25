@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,6 +19,8 @@ export class SidebarComponent {
 
   @Output() collapsedChange = new EventEmitter<boolean>();
 
+  constructor(private router: Router, private authService: AuthService) {}
+
   toggleSidebar() {
     this.isCollapsed = !this.isCollapsed;
     this.collapsedChange.emit(this.isCollapsed);
@@ -25,5 +28,10 @@ export class SidebarComponent {
 
   toggleGroup(group: 'cadastro' | 'listagem') {
     this.expandedGroups[group] = !this.expandedGroups[group];
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }
