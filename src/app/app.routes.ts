@@ -11,9 +11,12 @@ import { EmpresaCadastroComponent } from './empresa/cadastro/cadastro.component'
 import { EmpresaEdicaoComponent } from './empresa/edicao/edicao.component';
 import { EmpresaListagemComponent } from './empresa/listagem/listagem.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent }, 
+
+  { path: 'dashboard', component: DashboardComponent },
 
   { path: 'passageiro/listagem', component: PassageiroListagemComponent, canActivate: [AuthGuard] },
 
