@@ -1,0 +1,59 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Cadastro de Operador</p>
+
+    <form (ngSubmit)="salvar()">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Nome:</span>
+        <input
+          class="form-control"
+          name="nome"
+          type="text"
+          [(ngModel)]="operador.nome"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">E-mail:</span>
+        <input
+          class="form-control"
+          name="email"
+          type="email"
+          [(ngModel)]="operador.email"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Senha:</span>
+        <input
+          class="form-control"
+          name="senha"
+          type="password"
+          [(ngModel)]="operador.senha"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Tipo de Usuário:</span>
+        <select class="form-select" name="tipo" [(ngModel)]="operador.tipo_usuario_id">
+          <option value="" disabled>Selecione um tipo</option>
+          <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
+            {{ tipo.descricao }}
+          </option>
+        </select>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Empresa:</span>
+        <select class="form-select" name="tipo" [(ngModel)]="operador.empresaId">
+          <option value="" disabled>Selecione uma empresa</option>
+          <option *ngFor="let empresa of empresas" [value]="empresa.id">
+            {{ empresa.fantasia }}
+          </option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+    </form>
+  </div>
+</div>

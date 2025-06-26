@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Listagem de Operadores</p>
+
+    <div class="mb-3 text-end">
+      <a routerLink="/oeprador/cadastro" class="btn btn-success"
+        >Novo Cadastro</a
+      >
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead class="table-light">
+          <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let operador of operadores">
+            <td>{{ operador.id }}</td>
+            <td>{{ operador.nome }}</td>
+            <td>{{ operador.email }}</td>
+            <td>
+              <a
+                [routerLink]="['/operador/edicao', operador.id]"
+                class="btn btn-warning"
+                >Edição</a
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
