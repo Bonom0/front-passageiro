@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
 
 import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
 import { TipoUsuario } from '../../tipousuario/tipousuario.model';
+import { MotoristaService } from '../../motorista/motorista.service';
+import { Motorista } from '../../motorista/motorista.model';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -32,10 +35,12 @@ export class PassageiroCadastroComponent {
   };
 
   tiposUsuario: TipoUsuario[] = [];
+  motoristas: Motorista[] = [];
 
   constructor(
     private passageiroService: PassageiroService,
     private tipoUsuarioService: TipoUsuarioService,
+    private motoristaService: MotoristaService,
     private router: Router
   ) {}
 
@@ -43,6 +48,10 @@ export class PassageiroCadastroComponent {
     this.tipoUsuarioService.listarTipoUsuario().subscribe((tipos) => {
       this.tiposUsuario = tipos;
     });
+
+    this.motoristaService.listarMotorista().subscribe((motorista) => {
+      this.motoristas = motorista;
+    })
   }
 
   salvar() {
