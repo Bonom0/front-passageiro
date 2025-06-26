@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { LoginComponent } from './login/login.component';
@@ -22,14 +22,20 @@ export class AppComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;
   sidebarCollapsed = false;
   
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.isLoggedIn$ = this.authService.isLoggedIn();
   }
 
   onLogin() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard']).then(() => {
+      this.cdr.detectChanges();
+    });
   }
 
   onSidebarToggle(collapsed: boolean) {
