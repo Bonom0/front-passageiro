@@ -83,7 +83,7 @@
         />
       </div>
 
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label">Motorista:</label>
         <input
           name="motorista"
@@ -91,6 +91,16 @@
           [(ngModel)]="passageiro.id_motorista"
           class="form-control"
         />
+      </div> -->
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Motorista:</span>
+        <select class="form-select" name="motorista" [(ngModel)]="passageiro.id_motorista">
+          <option value="" disabled>Selecione um motorista</option>
+          <option *ngFor="let motorista of motoristas" [value]="motorista.id">
+            {{ motorista.nome }}
+          </option>
+        </select>
       </div>
 
       <div class="input-group mb-3">
