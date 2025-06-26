@@ -1,0 +1,69 @@
+<div class="container d-flex justify-content-center mt-5">
+  <div class="w-100" style="max-width: 1280px">
+    <p class="text-center fs-4 mb-4">Cadastro de Motorista</p>
+
+    <form (ngSubmit)="salvar()">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Nome:</span>
+        <input
+          class="form-control"
+          name="nome"
+          type="text"
+          [(ngModel)]="motorista.nome"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">CPF:</span>
+        <input
+          class="form-control"
+          name="cpf"
+          type="text"
+          [(ngModel)]="motorista.cpf"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Contato:</span>
+        <input
+          class="form-control"
+          name="contato"
+          type="text"
+          [(ngModel)]="motorista.contato"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">E-mail:</span>
+        <input
+          class="form-control"
+          name="email"
+          type="email"
+          [(ngModel)]="motorista.email"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Senha:</span>
+        <input
+          class="form-control"
+          name="senha"
+          type="password"
+          [(ngModel)]="motorista.senha"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Tipo de Usuário:</span>
+        <select class="form-select" name="tipo" [(ngModel)]="motorista.tipo_usuario_id">
+          <option value="" disabled>Selecione um tipo</option>
+          <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
+            {{ tipo.descricao }}
+          </option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+    </form>
+  </div>
+</div>
