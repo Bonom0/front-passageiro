@@ -3,7 +3,7 @@
     <p class="text-center fs-4 mb-4">Listagem de Empresas</p>
 
     <div class="mb-3 text-end">
-      <a routerLink="/empresa/cadastro" class="btn btn-success"
+      <a routerLink="/operador/empresa/cadastro" class="btn btn-success"
         >Novo Cadastro</a
       >
     </div>
@@ -25,7 +25,7 @@
             <td>{{ empresa.cnpj }}</td>
             <td>
               <a
-                [routerLink]="['/empresa/edicao', empresa.id]"
+                [routerLink]="['/operador/empresa/edicao', empresa.id]"
                 class="btn btn-warning"
                 >Edição</a
               >
