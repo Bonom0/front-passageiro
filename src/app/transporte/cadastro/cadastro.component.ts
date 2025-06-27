@@ -4,6 +4,7 @@ import { Passageiro } from '../passageiro.model';
 import { FormsModule } from '@angular/forms';
 import { PassageiroService } from '../passageiro.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
 import { TipoUsuario } from '../../tipousuario/tipousuario.model';
@@ -13,23 +14,27 @@ import { Motorista } from '../../motorista/motorista.model';
 @Component({
   selector: 'app-cadastro',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    NgxMaskDirective
+  ],
+  providers: [provideNgxMask()],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
 })
 export class PassageiroCadastroComponent implements OnInit {
   passageiro: Passageiro = {
-    id: '',
     nome: '',
     cpf: '',
     senha: '',
     cep: '',
     rua: '',
     contato: '',
-    horario_embarque: new Date(),
+    horario_embarque: '',
     id_motorista: '',
     ativo: true,
-    dta_insert: new Date(),
+    dta_insert: new Date().toISOString().slice(0, 16),
     tipo: '',
     email: '',
   };
@@ -58,17 +63,10 @@ export class PassageiroCadastroComponent implements OnInit {
     console.log('Chamou salvar!');
     const passageiroCorrigido = { ...this.passageiro };
 
-    if (passageiroCorrigido.horario_embarque) {
-      // Converte a string do input datetime-local para Date (mantém horário local)
-      passageiroCorrigido.horario_embarque = new Date(
-        passageiroCorrigido.horario_embarque
-      );
-    }
-
     this.passageiroService
       .cadastrarPassageiro(passageiroCorrigido)
       .subscribe(() => {
-        this.router.navigate(['/passageiro/listagem']);
+        this.router.navigate(['/operador/passageiro/listagem']);
       });
   }
 }
