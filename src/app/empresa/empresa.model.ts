@@ -1,5 +1,5 @@
 export interface Empresa {
-  id: string;
+  id?: string;
   fantasia: string;
   cnpj: string;
 }
