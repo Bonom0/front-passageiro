@@ -1,4 +1,4 @@
 export interface TipoUsuario {
-  id: string;
+  id?: string;
   descricao: string;
 }
