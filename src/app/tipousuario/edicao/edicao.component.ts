@@ -13,7 +13,6 @@ import { TipoUsuario } from '../tipousuario.model';
 })
 export class TipoUsuarioEdicaoComponent implements OnInit {
   tipousuario: TipoUsuario = {
-    id: '',
     descricao: '',
   };
   private id!: string;
@@ -31,7 +30,7 @@ export class TipoUsuarioEdicaoComponent implements OnInit {
 
   carregarTipoUsuario(): void {
     if (!this.id) {
-      this.router.navigate(['/tipousuario/listagem']);
+      this.router.navigate(['/operador/tipousuario/listagem']);
       return;
     }
 
@@ -43,10 +42,13 @@ export class TipoUsuarioEdicaoComponent implements OnInit {
   salvar(): void {
     if (!this.tipousuario) return;
 
+    // Cria um novo objeto sem o campo id
+    const { id, ...tipousuarioSemId } = this.tipousuario;
+
     this.tipousuarioService
-      .atualizarTipoUsuario(this.id, this.tipousuario)
+      .atualizarTipoUsuario(this.id, tipousuarioSemId)
       .subscribe(() => {
-        this.router.navigate(['/tipousuario/listagem']);
+        this.router.navigate(['/operador/tipousuario/listagem']);
       });
   }
 }
