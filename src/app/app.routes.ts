@@ -26,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 //------------------------------------------------------------------------------//
 
 //Telas Passageiro
+import { CadastroComponent } from './passageiroPresenca/cadastro/cadastro.component';
 
 //------------------------------------------------------------------------------//
 
@@ -135,9 +136,12 @@ export const routes: Routes = [
   // },
 
   //Rotas Passageiro
-  // {
-  //   path: 'passageiro',
-  //   canActivate: [AuthGuard],
-  //   data: { role: 'Passageiro' }
-  // }
+  {
+    path: 'passageiro',
+    canActivate: [AuthGuard],
+    data: { role: 'Passageiro' },
+    children: [
+      { path: 'passageiro/passageiro/confirmacao-presenca', component: CadastroComponent },
+    ]
+  }
 ];
