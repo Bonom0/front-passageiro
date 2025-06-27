@@ -2,7 +2,7 @@
   <div class="w-100" style="max-width: 1280px">
     <p class="text-center fs-4 mb-4">Edição de Empresa</p>
 
-    <form (ngSubmit)="salvar()">
+    <form #formEmpresa="ngForm" (ngSubmit)="salvar()" novalidate>
       <div class="mb-3">
         <label class="form-label">Fantasia:</label>
         <input
@@ -10,7 +10,12 @@
           type="text"
           [(ngModel)]="empresa.fantasia"
           class="form-control"
+          required
+          #fantasia="ngModel"
         />
+        <div *ngIf="fantasia.invalid && fantasia.touched" class="text-danger">
+          O campo Fantasia é obrigatório.
+        </div>
       </div>
 
       <div class="mb-3">
@@ -20,10 +25,18 @@
           type="text"
           [(ngModel)]="empresa.cnpj"
           class="form-control"
+          mask="00.000.000/0000-00"
+          required
+          #cnpj="ngModel"
         />
+        <div *ngIf="cnpj.invalid && cnpj.touched" class="text-danger">
+          O campo CNPJ é obrigatório.
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-primary w-100">Gravar</button>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="formEmpresa.invalid">
+        Gravar
+      </button>
     </form>
   </div>
 </div>
