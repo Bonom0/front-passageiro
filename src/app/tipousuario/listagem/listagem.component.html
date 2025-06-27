@@ -3,7 +3,7 @@
     <p class="text-center fs-4 mb-4">Listagem de Tipos de Usuário</p>
 
     <div class="mb-3 text-end">
-      <a routerLink="/tipousuario/cadastro" class="btn btn-success"
+      <a routerLink="/operador/tipousuario/cadastro" class="btn btn-success"
         >Novo Cadastro</a
       >
     </div>
@@ -23,7 +23,7 @@
             <td>{{ tipousuario.descricao }}</td>
             <td>
               <a
-                [routerLink]="['/tipousuario/edicao', tipousuario.id]"
+                [routerLink]="['/operador/tipousuario/edicao', tipousuario.id]"
                 class="btn btn-warning"
                 >Edição</a
               >
