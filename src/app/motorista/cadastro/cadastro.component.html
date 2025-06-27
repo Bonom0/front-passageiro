@@ -2,7 +2,7 @@
   <div class="w-100" style="max-width: 1280px">
     <p class="text-center fs-4 mb-4">Cadastro de Motorista</p>
 
-    <form (ngSubmit)="salvar()">
+    <form #formMotorista="ngForm" (ngSubmit)="salvar()" novalidate>
       <div class="input-group mb-3">
         <span class="input-group-text">Nome:</span>
         <input
@@ -10,7 +10,12 @@
           name="nome"
           type="text"
           [(ngModel)]="motorista.nome"
+          required
+          #nome="ngModel"
         />
+      </div>
+      <div *ngIf="nome.invalid && nome.touched" class="text-danger mb-2">
+        O nome é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -20,7 +25,13 @@
           name="cpf"
           type="text"
           [(ngModel)]="motorista.cpf"
+          mask="000.000.000-00"
+          required
+          #cpf="ngModel"
         />
+      </div>
+      <div *ngIf="cpf.invalid && cpf.touched" class="text-danger mb-2">
+        O CPF é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -30,7 +41,13 @@
           name="contato"
           type="text"
           [(ngModel)]="motorista.contato"
+          mask="(00) 00000-0000"
+          required
+          #contato="ngModel"
         />
+      </div>
+      <div *ngIf="contato.invalid && contato.touched" class="text-danger mb-2">
+        O contato é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -40,7 +57,12 @@
           name="email"
           type="email"
           [(ngModel)]="motorista.email"
+          required
+          #email="ngModel"
         />
+      </div>
+      <div *ngIf="email.invalid && email.touched" class="text-danger mb-2">
+        O e-mail é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -50,20 +72,38 @@
           name="senha"
           type="password"
           [(ngModel)]="motorista.senha"
+          minlength="6"
+          required
+          #senha="ngModel"
         />
+      </div>
+      <div *ngIf="senha.invalid && senha.touched" class="text-danger mb-2">
+        <span *ngIf="senha.errors?.['required']">A senha é obrigatória.</span>
+        <span *ngIf="senha.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</span>
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text">Tipo de Usuário:</span>
-        <select class="form-select" name="tipo" [(ngModel)]="motorista.tipo_usuario_id">
+        <select
+          class="form-select"
+          name="tipo"
+          [(ngModel)]="motorista.tipo_usuario_id"
+          required
+          #tipo="ngModel"
+        >
           <option value="" disabled>Selecione um tipo</option>
           <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
             {{ tipo.descricao }}
           </option>
         </select>
       </div>
+      <div *ngIf="tipo.invalid && tipo.touched" class="text-danger mb-2">
+        O tipo de usuário é obrigatório.
+      </div>
 
-      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="formMotorista.invalid">
+        Gravar
+      </button>
     </form>
   </div>
 </div>
