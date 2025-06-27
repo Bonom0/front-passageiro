@@ -4,12 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpresaService } from '../empresa.service';
 import { Empresa } from '../empresa.model';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-edicao',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
+  providers: [provideNgxMask()],
 })
 export class EmpresaEdicaoComponent implements OnInit {
   empresa: Empresa = {
@@ -32,7 +34,7 @@ export class EmpresaEdicaoComponent implements OnInit {
 
   carregarEmpresa(): void {
     if (!this.id) {
-      this.router.navigate(['/empresa/listagem']);
+      this.router.navigate(['/operador/empresa/listagem']);
       return;
     }
 
@@ -44,10 +46,13 @@ export class EmpresaEdicaoComponent implements OnInit {
   salvar(): void {
     if (!this.empresa) return;
 
+    // Cria um novo objeto sem o campo id
+    const { id, ...empresaSemId } = this.empresa;
+
     this.empresaService
-      .atualizarEmpresa(this.id, this.empresa)
+      .atualizarEmpresa(this.id, empresaSemId)
       .subscribe(() => {
-        this.router.navigate(['/empresa/listagem']);
+        this.router.navigate(['/operador/empresa/listagem']);
       });
   }
 }
