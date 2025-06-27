@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 })
 export class TipoUsuarioCadastroComponent {
   tipousuario: TipoUsuario = {
-    id: '',
     descricao: '',
   };
 
@@ -26,7 +25,7 @@ export class TipoUsuarioCadastroComponent {
     this.tipousuarioService
       .cadastrarTipoUsuario(this.tipousuario)
       .subscribe(() => {
-        this.router.navigate(['/tipousuario/listagem']);
+        this.router.navigate(['/operador/tipousuario/listagem']);
       });
   }
 }
