@@ -7,16 +7,17 @@ import { Motorista } from '../motorista.model';
 
 import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
 import { TipoUsuario } from '../../tipousuario/tipousuario.model';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-edicao',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './edicao.component.html',
   styleUrl: './edicao.component.css',
+  providers: [provideNgxMask()]
 })
 export class MotoristaEdicaoComponent implements OnInit {
   motorista: Motorista = {
-    id: '',
     nome: '',
     cpf: '',
     senha: '',
@@ -43,7 +44,7 @@ export class MotoristaEdicaoComponent implements OnInit {
 
   carregarMotorista(): void {
     if (!this.id) {
-      this.router.navigate(['/motorista/listagem']);
+      this.router.navigate(['/operador/motorista/listagem']);
       return;
     }
 
@@ -61,10 +62,12 @@ export class MotoristaEdicaoComponent implements OnInit {
   salvar(): void {
     if (!this.motorista) return;
 
+    const { id, tipo, ...motoristaSemCamposExtras } = this.motorista;
+
     this.motoristaService
-      .atualizarMotorista(this.id, this.motorista)
+      .atualizarMotorista(this.id, motoristaSemCamposExtras)
       .subscribe(() => {
-        this.router.navigate(['/motorista/listagem']);
+        this.router.navigate(['/operador/motorista/listagem']);
       });
   }
 }
