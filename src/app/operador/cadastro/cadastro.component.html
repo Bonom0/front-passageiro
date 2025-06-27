@@ -2,7 +2,7 @@
   <div class="w-100" style="max-width: 1280px">
     <p class="text-center fs-4 mb-4">Cadastro de Operador</p>
 
-    <form (ngSubmit)="salvar()">
+    <form #formOperador="ngForm" (ngSubmit)="salvar()" novalidate>
       <div class="input-group mb-3">
         <span class="input-group-text">Nome:</span>
         <input
@@ -10,7 +10,12 @@
           name="nome"
           type="text"
           [(ngModel)]="operador.nome"
+          required
+          #nome="ngModel"
         />
+      </div>
+      <div *ngIf="nome.invalid && nome.touched" class="text-danger mb-2">
+        O nome é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -20,7 +25,12 @@
           name="email"
           type="email"
           [(ngModel)]="operador.email"
+          required
+          #email="ngModel"
         />
+      </div>
+      <div *ngIf="email.invalid && email.touched" class="text-danger mb-2">
+        O e-mail é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -30,30 +40,57 @@
           name="senha"
           type="password"
           [(ngModel)]="operador.senha"
+          minlength="6"
+          required
+          #senha="ngModel"
         />
+      </div>
+      <div *ngIf="senha.invalid && senha.touched" class="text-danger mb-2">
+        <span *ngIf="senha.errors?.['required']">A senha é obrigatória.</span>
+        <span *ngIf="senha.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</span>
       </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text">Tipo de Usuário:</span>
-        <select class="form-select" name="tipo" [(ngModel)]="operador.tipo_usuario_id">
+        <select
+          class="form-select"
+          name="tipo"
+          [(ngModel)]="operador.tipo_usuario_id"
+          required
+          #tipo="ngModel"
+        >
           <option value="" disabled>Selecione um tipo</option>
           <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
             {{ tipo.descricao }}
           </option>
         </select>
       </div>
+      <div *ngIf="tipo.invalid && tipo.touched" class="text-danger mb-2">
+        O tipo de usuário é obrigatório.
+      </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text">Empresa:</span>
-        <select class="form-select" name="tipo" [(ngModel)]="operador.empresaId">
+        <select
+          class="form-select"
+          name="empresa"
+          [(ngModel)]="operador.empresaId"
+          required
+          #empresa="ngModel"
+        >
           <option value="" disabled>Selecione uma empresa</option>
           <option *ngFor="let empresa of empresas" [value]="empresa.id">
             {{ empresa.fantasia }}
           </option>
         </select>
       </div>
+      <div *ngIf="empresa.invalid && empresa.touched" class="text-danger mb-2">
+        A empresa é obrigatória.
+      </div>
 
-      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="formOperador.invalid">
+        Gravar
+      </button>
     </form>
   </div>
 </div>
