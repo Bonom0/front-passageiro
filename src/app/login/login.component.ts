@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -18,6 +18,8 @@ export class LoginComponent {
   userType = '';
   errorMessage = '';
 
+  @Output() loginSuccess = new EventEmitter<{ userType: string; email: string; token: string }>();
+
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
@@ -30,6 +32,7 @@ export class LoginComponent {
             localStorage.setItem('access_token', response.access_token);
             // Redireciona para a dashboard
             this.router.navigate(['/operador/dashboard']);
+            this.loginSuccess.emit({ userType: this.userType, email: this.email, token: response.access_token });
           },
           error: (err) => {
             if (err.status === 401) {
