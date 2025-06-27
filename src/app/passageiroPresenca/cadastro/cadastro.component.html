@@ -1,0 +1,9 @@
+<h2>Confirmação de Presença</h2>
+<form (ngSubmit)="confirmar()">
+  <label>
+    <input type="checkbox" [(ngModel)]="presenca" name="presenca" />
+    Confirmo minha presença
+  </label>
+  <button type="submit" class="btn btn-primary">Confirmar</button>
+</form>
+<p *ngIf="mensagem">{{ mensagem }}</p>
