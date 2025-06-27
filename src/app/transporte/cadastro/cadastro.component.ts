@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Passageiro } from '../passageiro.model';
 import { FormsModule } from '@angular/forms';
 import { PassageiroService } from '../passageiro.service';
@@ -10,14 +10,14 @@ import { TipoUsuario } from '../../tipousuario/tipousuario.model';
 import { MotoristaService } from '../../motorista/motorista.service';
 import { Motorista } from '../../motorista/motorista.model';
 
-
 @Component({
   selector: 'app-cadastro',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
 })
-export class PassageiroCadastroComponent {
+export class PassageiroCadastroComponent implements OnInit {
   passageiro: Passageiro = {
     id: '',
     nome: '',
@@ -51,10 +51,11 @@ export class PassageiroCadastroComponent {
 
     this.motoristaService.listarMotorista().subscribe((motorista) => {
       this.motoristas = motorista;
-    })
+    });
   }
 
   salvar() {
+    console.log('Chamou salvar!');
     const passageiroCorrigido = { ...this.passageiro };
 
     if (passageiroCorrigido.horario_embarque) {

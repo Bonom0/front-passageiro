@@ -31,40 +31,102 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 //Login
 import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent }, 
+  { path: '', component: LoginComponent },
 
   //Rotas Operador
   {
     path: 'operador',
+    component: LayoutComponent,
     canActivate: [AuthGuard],
     data: { role: 'Operador' },
     children: [
       { path: 'dashboard', component: DashboardComponent },
 
-      { path: 'passageiro/listagem', component: PassageiroListagemComponent, canActivate: [AuthGuard] },
-      { path: 'passageiro/cadastro', component: PassageiroCadastroComponent, canActivate: [AuthGuard] },
-      { path: 'passageiro/edicao/:id', component: PassageiroEdicaoComponent, canActivate: [AuthGuard] },
+      {
+        path: 'passageiro/listagem',
+        component: PassageiroListagemComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'passageiro/cadastro',
+        component: PassageiroCadastroComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'passageiro/edicao/:id',
+        component: PassageiroEdicaoComponent,
+        canActivate: [AuthGuard],
+      },
 
-      { path: 'tipousuario/listagem', component: TipoUsuarioListagemComponent, canActivate: [AuthGuard] },
-      { path: 'tipousuario/cadastro', component: TipoUsuarioCadastroComponent, canActivate: [AuthGuard] },
-      { path: 'tipousuario/edicao/:id', component: TipoUsuarioEdicaoComponent, canActivate: [AuthGuard] },
+      {
+        path: 'tipousuario/listagem',
+        component: TipoUsuarioListagemComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'tipousuario/cadastro',
+        component: TipoUsuarioCadastroComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'tipousuario/edicao/:id',
+        component: TipoUsuarioEdicaoComponent,
+        canActivate: [AuthGuard],
+      },
 
-      { path: 'empresa/listagem', component: EmpresaListagemComponent, canActivate: [AuthGuard] },
-      { path: 'empresa/cadastro', component: EmpresaCadastroComponent, canActivate: [AuthGuard] },
-      { path: 'empresa/edicao/:id', component: EmpresaEdicaoComponent, canActivate: [AuthGuard] },
+      {
+        path: 'empresa/listagem',
+        component: EmpresaListagemComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'empresa/cadastro',
+        component: EmpresaCadastroComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'empresa/edicao/:id',
+        component: EmpresaEdicaoComponent,
+        canActivate: [AuthGuard],
+      },
 
-      { path: 'operador/listagem', component: OperadorListagemComponent, canActivate: [AuthGuard] },
-      { path: 'operador/cadastro', component: OperadorCadastroComponent, canActivate: [AuthGuard] },
-      { path: 'operador/edicao/:id', component: OperadorEdicaoComponent, canActivate: [AuthGuard] },
+      {
+        path: 'operador/listagem',
+        component: OperadorListagemComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'operador/cadastro',
+        component: OperadorCadastroComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'operador/edicao/:id',
+        component: OperadorEdicaoComponent,
+        canActivate: [AuthGuard],
+      },
 
-      { path: 'motorista/listagem', component: MotoristaListagemComponent, canActivate: [AuthGuard] },
-      { path: 'motorista/cadastro', component: MotoristaCadastroComponent, canActivate: [AuthGuard] },
-      { path: 'motorista/edicao/:id', component: MotoristaEdicaoComponent, canActivate: [AuthGuard] },
-    ]
+      {
+        path: 'motorista/listagem',
+        component: MotoristaListagemComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'motorista/cadastro',
+        component: MotoristaCadastroComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'motorista/edicao/:id',
+        component: MotoristaEdicaoComponent,
+        canActivate: [AuthGuard],
+      },
+    ],
   },
-  
+
   //Rotas Motorista
   // {
   //   path: 'motorista',
