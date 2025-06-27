@@ -2,7 +2,7 @@
   <div class="w-100" style="max-width: 1280px">
     <p class="text-center fs-4 mb-4">Edição de Tipo de Usuário</p>
 
-    <form (ngSubmit)="salvar()">
+    <form #formTipoUsuario="ngForm" (ngSubmit)="salvar()" novalidate>
       <div class="mb-3">
         <label class="form-label">Descrição:</label>
         <input
@@ -10,9 +10,16 @@
           type="text"
           [(ngModel)]="tipousuario.descricao"
           class="form-control"
+          required
+          #descricao="ngModel"
         />
       </div>
-      <button type="submit" class="btn btn-primary w-100">Gravar</button>
+      <div *ngIf="descricao.invalid && descricao.touched" class="text-danger mb-2">
+        A descrição é obrigatória.
+      </div>
+      <button type="submit" class="btn btn-primary w-100" [disabled]="formTipoUsuario.invalid">
+        Gravar
+      </button>
     </form>
   </div>
 </div>
