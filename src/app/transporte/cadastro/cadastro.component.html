@@ -2,7 +2,7 @@
   <div class="w-100" style="max-width: 1280px">
     <p class="text-center fs-4 mb-4">Cadastro de Passageiro</p>
 
-    <form (ngSubmit)="salvar()">
+    <form #formPassageiro="ngForm" (ngSubmit)="salvar()" novalidate>
       <div class="input-group mb-3">
         <span class="input-group-text">Nome:</span>
         <input
@@ -10,7 +10,12 @@
           name="nome"
           type="text"
           [(ngModel)]="passageiro.nome"
+          required
+          #nome="ngModel"
         />
+      </div>
+      <div *ngIf="nome.invalid && nome.touched" class="text-danger mb-2">
+        O nome é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -20,7 +25,13 @@
           name="cpf"
           type="text"
           [(ngModel)]="passageiro.cpf"
+          mask="000.000.000-00"
+          required
+          #cpf="ngModel"
         />
+      </div>
+      <div *ngIf="cpf.invalid && cpf.touched" class="text-danger mb-2">
+        O CPF é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -30,7 +41,13 @@
           name="contato"
           type="text"
           [(ngModel)]="passageiro.contato"
+          mask="(00) 00000-0000"
+          required
+          #contato="ngModel"
         />
+      </div>
+      <div *ngIf="contato.invalid && contato.touched" class="text-danger mb-2">
+        O contato é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -40,7 +57,12 @@
           name="email"
           type="email"
           [(ngModel)]="passageiro.email"
+          required
+          #email="ngModel"
         />
+      </div>
+      <div *ngIf="email.invalid && email.touched" class="text-danger mb-2">
+        O e-mail é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -50,7 +72,14 @@
           name="senha"
           type="password"
           [(ngModel)]="passageiro.senha"
+          minlength="6"
+          required
+          #senha="ngModel"
         />
+      </div>
+      <div *ngIf="senha.invalid && senha.touched" class="text-danger mb-2">
+        <span *ngIf="senha.errors?.['required']">A senha é obrigatória.</span>
+        <span *ngIf="senha.errors?.['minlength']">A senha deve ter no mínimo 6 caracteres.</span>
       </div>
 
       <div class="input-group mb-3">
@@ -60,7 +89,13 @@
           name="cep"
           type="text"
           [(ngModel)]="passageiro.cep"
+          mask="00000-000"
+          required
+          #cep="ngModel"
         />
+      </div>
+      <div *ngIf="cep.invalid && cep.touched" class="text-danger mb-2">
+        O CEP é obrigatório.
       </div>
 
       <div class="input-group mb-3">
@@ -70,7 +105,12 @@
           name="rua"
           type="text"
           [(ngModel)]="passageiro.rua"
+          required
+          #rua="ngModel"
         />
+      </div>
+      <div *ngIf="rua.invalid && rua.touched" class="text-danger mb-2">
+        A rua é obrigatória.
       </div>
 
       <div class="input-group mb-3">
@@ -80,40 +120,55 @@
           name="horarioEmbarque"
           type="datetime-local"
           [(ngModel)]="passageiro.horario_embarque"
+          required
+          #horarioEmbarque="ngModel"
         />
       </div>
-
-      <!-- <div class="input-group mb-3">
-        <span class="input-group-text">Motorista:</span>
-        <input
-          class="form-control"
-          name="motorista"
-          type="text"
-          [(ngModel)]="passageiro.id_motorista"
-        />
-      </div> -->
+      <div *ngIf="horarioEmbarque.invalid && horarioEmbarque.touched" class="text-danger mb-2">
+        O horário de embarque é obrigatório.
+      </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text">Motorista:</span>
-        <select class="form-select" name="motorista" [(ngModel)]="passageiro.id_motorista">
+        <select
+          class="form-select"
+          name="motorista"
+          [(ngModel)]="passageiro.id_motorista"
+          required
+          #motorista="ngModel"
+        >
           <option value="" disabled>Selecione um motorista</option>
           <option *ngFor="let motorista of motoristas" [value]="motorista.id">
             {{ motorista.nome }}
           </option>
         </select>
       </div>
+      <div *ngIf="motorista.invalid && motorista.touched" class="text-danger mb-2">
+        O motorista é obrigatório.
+      </div>
 
       <div class="input-group mb-3">
         <span class="input-group-text">Tipo de Usuário:</span>
-        <select class="form-select" name="tipo" [(ngModel)]="passageiro.tipo">
+        <select
+          class="form-select"
+          name="tipo"
+          [(ngModel)]="passageiro.tipo"
+          required
+          #tipo="ngModel"
+        >
           <option value="" disabled>Selecione um tipo</option>
           <option *ngFor="let tipo of tiposUsuario" [value]="tipo.id">
             {{ tipo.descricao }}
           </option>
         </select>
       </div>
+      <div *ngIf="tipo.invalid && tipo.touched" class="text-danger mb-2">
+        O tipo de usuário é obrigatório.
+      </div>
 
-      <button class="btn btn-primary w-100" type="submit">Gravar</button>
+      <button class="btn btn-primary w-100" type="submit" [disabled]="formPassageiro.invalid">
+        Gravar
+      </button>
     </form>
   </div>
 </div>
