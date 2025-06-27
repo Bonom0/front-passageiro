@@ -19,7 +19,6 @@ import { Empresa } from '../../empresa/empresa.model';
 })
 export class OperadorEdicaoComponent implements OnInit {
   operador: Operador = {
-    id: '',
     nome: '',
     email: '',
     senha: '',
@@ -28,8 +27,8 @@ export class OperadorEdicaoComponent implements OnInit {
   };
   private id!: string;
 
-  tiposUsuario: TipoUsuario[] = [];
   empresas: Empresa[] = [];
+  tiposUsuario: TipoUsuario[] = [];
 
   constructor(
     private route: ActivatedRoute, //captura o ID
@@ -41,41 +40,61 @@ export class OperadorEdicaoComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = String(this.route.snapshot.paramMap.get('id'));
-    this.carregarOperador();
-    this.carregarEmpresa();
-    this.carregarTiposUsuario();
+    this.carregarEmpresa(() => {
+      this.carregarTiposUsuario(() => {
+        this.carregarOperador();
+      });
+    });
   }
 
   carregarOperador(): void {
     if (!this.id) {
-      this.router.navigate(['/operador/listagem']);
+      this.router.navigate(['/operador/operador/listagem']);
       return;
     }
 
     this.operadorService.buscarOperador(this.id).subscribe((a) => {
       this.operador = a;
+      console.log('Operador carregado:', this.operador);
+
+      if (this.operador.tipo && typeof this.operador.tipo === 'object') {
+        this.operador.tipo_usuario_id = this.operador.tipo.id;
+      }
+      if (this.operador.empresa && typeof this.operador.empresa === 'object') {
+        this.operador.empresaId = this.operador.empresa.id;
+      }
+      if (this.operador.empresaId) {
+        this.operador.empresaId = this.operador.empresaId;
+      }
+      if (this.operador.empresaId) {
+      }
     });
   }
 
-  carregarTiposUsuario(): void {
+  carregarTiposUsuario(callback?: () => void): void {
     this.tipoUsuarioService.listarTipoUsuario().subscribe((tipos) => {
       this.tiposUsuario = tipos;
+      if (callback) callback();
     });
   }
 
-  carregarEmpresa(): void {
+  carregarEmpresa(callback?: () => void): void {
     this.empresaService.listarEmpresa().subscribe((empresa) => {
       this.empresas = empresa;
+      console.log('Empresas:', this.empresas);
+      if (callback) callback();
     });
   }
 
   salvar(): void {
     if (!this.operador) return;
 
+    const { id, ...operadorParaEnvio } = this.operador;
+
     this.operadorService
-      .atualizarOperador(this.id, this.operador)
+      .atualizarOperador(this.id, operadorParaEnvio)
       .subscribe(() => {
-        this.router.navigate(['/operador/listagem']);
+        this.router.navigate(['/operador/operador/listagem']);
       });
   }
 }
