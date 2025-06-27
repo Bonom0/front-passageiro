@@ -3,24 +3,36 @@
     <p class="text-center fs-4 mb-4">Listagem de Passageiros</p>
 
     <div class="mb-3 text-end">
-      <a routerLink="/passageiro/cadastro" class="btn btn-success"
+      <a routerLink="/operador/passageiro/cadastro" class="btn btn-success"
         >Novo Cadastro</a
       >
     </div>
 
-    <div>
-      <input
-        type="text"
-        [(ngModel)]="filtroNome"
-        placeholder="Filtrar por nome"
-      />
-      <input
-        type="text"
-        [(ngModel)]="filtroEmail"
-        placeholder="Filtrar por e-mail"
-      />
-      <button (click)="aplicarFiltros()">Filtrar</button>
-    </div>
+    <form class="row g-2 align-items-center mb-4" (ngSubmit)="aplicarFiltros()">
+      <div class="col-auto">
+        <input
+          type="text"
+          [(ngModel)]="filtroNome"
+          name="filtroNome"
+          class="form-control"
+          placeholder="Filtrar por nome"
+        />
+      </div>
+      <div class="col-auto">
+        <input
+          type="text"
+          [(ngModel)]="filtroEmail"
+          name="filtroEmail"
+          class="form-control"
+          placeholder="Filtrar por e-mail"
+        />
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary">
+          <i class="bi bi-search"></i> Filtrar
+        </button>
+      </div>
+    </form>
 
     <div class="table-responsive">
       <table class="table table-bordered table-striped">
@@ -39,7 +51,7 @@
             <td>{{ passageiro.cpf }}</td>
             <td>
               <a
-                [routerLink]="['/passageiro/edicao/', passageiro.id]"
+                [routerLink]="['/operador/passageiro/edicao/', passageiro.id]"
                 class="btn btn-warning"
                 >Edição</a
               >
