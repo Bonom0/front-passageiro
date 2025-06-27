@@ -4,19 +4,20 @@ import { Motorista } from '../motorista.model';
 import { FormsModule } from '@angular/forms';
 import { MotoristaService } from '../motorista.service';
 import { Router } from '@angular/router';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 import { TipoUsuarioService } from '../../tipousuario/tipousuario.service';
 import { TipoUsuario } from '../../tipousuario/tipousuario.model';
 
 @Component({
   selector: 'app-cadastro',
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxMaskDirective],
   templateUrl: './cadastro.component.html',
   styleUrl: './cadastro.component.css',
+  providers: [provideNgxMask()]
 })
 export class MotoristaCadastroComponent {
   motorista: Motorista = {
-    id: '',
     nome: '',
     cpf: '',
     senha: '',
@@ -43,7 +44,7 @@ export class MotoristaCadastroComponent {
     this.motoristaService
       .cadastrarMotorista(this.motorista)
       .subscribe(() => {
-        this.router.navigate(['/motorista/listagem']);
+        this.router.navigate(['/operador/motorista/listagem']);
       });
   }
 }
