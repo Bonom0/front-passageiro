@@ -18,7 +18,6 @@ import { Empresa } from '../../empresa/empresa.model';
 })
 export class OperadorCadastroComponent {
   operador: Operador = {
-    id: '',
     nome: '',
     email: '',
     senha: '',
@@ -48,7 +47,7 @@ export class OperadorCadastroComponent {
 
   salvar() {
     this.operadorService.cadastrarOperador(this.operador).subscribe(() => {
-      this.router.navigate(['/operador/listagem']);
+      this.router.navigate(['/operador/operador/listagem']);
     });
   }
 }
