@@ -3,7 +3,7 @@
     <p class="text-center fs-4 mb-4">Listagem de Motoristas</p>
 
     <div class="mb-3 text-end">
-      <a routerLink="/motorista/cadastro" class="btn btn-success"
+      <a routerLink="/operador/motorista/cadastro" class="btn btn-success"
         >Novo Cadastro</a
       >
     </div>
@@ -25,7 +25,7 @@
             <td>{{ motorista.cpf }}</td>
             <td>
               <a
-                [routerLink]="['/motorista/edicao/', motorista.id]"
+                [routerLink]="['/operador/motorista/edicao/', motorista.id]"
                 class="btn btn-warning"
                 >Edição</a
               >
