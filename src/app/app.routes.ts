@@ -21,15 +21,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 //------------------------------------------------------------------------------//
 
-//Telas Motorista
-
-//------------------------------------------------------------------------------//
-
-//Telas Passageiro
-import { CadastroComponent } from './passageiroPresenca/cadastro/cadastro.component';
-
-//------------------------------------------------------------------------------//
-
 //Login
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -127,21 +118,4 @@ export const routes: Routes = [
       },
     ],
   },
-
-  //Rotas Motorista
-  // {
-  //   path: 'motorista',
-  //   canActivate: [AuthGuard],
-  //   data: { role: 'Motorista' },
-  // },
-
-  //Rotas Passageiro
-  {
-    path: 'passageiro',
-    canActivate: [AuthGuard],
-    data: { role: 'Passageiro' },
-    children: [
-      { path: 'passageiro/passageiro/confirmacao-presenca', component: CadastroComponent },
-    ]
-  }
 ];

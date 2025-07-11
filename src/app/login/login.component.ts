@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   email = '';
   password = '';
-  userType = '';
+  userType = 'Operador';
   errorMessage = '';
 
   @Output() loginSuccess = new EventEmitter<{ userType: string; email: string; token: string }>();

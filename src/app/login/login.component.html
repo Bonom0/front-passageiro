@@ -35,25 +35,6 @@
       A senha deve ter pelo menos 6 caracteres.
     </div>
 
-    <label for="userType">Tipo de Usuário</label>
-    <select
-      name="userType"
-      id="userType"
-      required
-      [(ngModel)]="userType"
-      #userTypeInput="ngModel"
-      [class.invalid]="userTypeInput.invalid && userTypeInput.touched"
-      aria-describedby="userTypeError"
-    >
-      <option value="" disabled selected>Selecione o tipo de usuário</option>
-      <option value="Operador">Operador</option>
-      <option value="Motorista">Motorista</option>
-      <option value="Passageiro">Passageiro</option>
-    </select>
-    <div class="error" id="userTypeError" *ngIf="userTypeInput.invalid && userTypeInput.touched">
-      Selecione um tipo de usuário.
-    </div>
-
     <div class="error" *ngIf="errorMessage">
       {{ errorMessage }}
     </div>
